@@ -15,5 +15,8 @@ while None in password:
         char = md5[6]
         if position < len(password) and not password[position]:
             password[position] = char
-            print(''.join(map(lambda c: '_' if c is None else c, password)))
+    if index % 10000 == 0:
+        sys.stdout.write('\r' + ''.join(map(lambda i: password[i] or md5[i], range(len(password)))))
     index += 1
+
+print('\r' + password)
