@@ -13,8 +13,5 @@ while len(password) < 8:
     if md5.startswith(5 * '0'):
         char = md5[5]
         password += md5[5]
-        sys.stdout.write(char)
-        sys.stdout.flush()
+        print(password)
     index += 1
-
-sys.stdout.write('\n')
