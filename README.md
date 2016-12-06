@@ -44,5 +44,5 @@ Languages I've never or almost never used before:
 * Lua
 * OCaml
 * Octave
-* R
+* <s>R</s>
 * Rust
