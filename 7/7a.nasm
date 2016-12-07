@@ -5,6 +5,8 @@ printbuf:
         db 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 printbuf_end:
         db 10 ; newline
+abbabuf:
+        db 0, 0, 0, 0
 
 section .bss
 section .text
@@ -92,11 +94,25 @@ parse_line_no_tls:
         ; Sets ecx to 1 if abba is found, 0 otherwise.
 detect_abba:
         mov ecx, 0
+        mov dword [abbabuf], 0
 
 detect_abba_loop:
         cmp byte [readbuf], 97 ; 'a'
         jc detect_abba_end
+        mov edx, [abbabuf]
+        shl edx, 8
+        or dl, [readbuf]
+        mov [abbabuf], edx
+        mov dl, [abbabuf]
+        cmp dl, [abbabuf + 3]
+        jnz detect_abba_no_abba
+        cmp dl, [abbabuf + 1]
+        jz detect_abba_no_abba
+        mov dl, [abbabuf + 1]
+        cmp dl, [abbabuf + 2]
+        jnz detect_abba_no_abba
         mov ecx, 1
+detect_abba_no_abba:
         call read
         jmp detect_abba_loop
 
