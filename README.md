@@ -10,7 +10,6 @@ port those.
 
 Languages I'm comfortable with:
 
-* Assembly (6502 or Z80; x86 if I'm feeling adventurous)
 * BASIC
 * C
 * C#
@@ -20,11 +19,16 @@ Languages I'm comfortable with:
 * Haxe
 * Java
 * JavaScript
-* PHP
-* Perl
 * <s>Python</s>
 * Ruby
 * <s>Sh (bash and common shell utilities)</s>
+
+Languages I've touched before, but am not intimately familiar with:
+
+* Groovy
+* Lua
+* Perl
+* PHP
 
 Languages I've never or almost never used before:
 
@@ -38,11 +42,10 @@ Languages I've never or almost never used before:
 * Erlang
 * F#
 * Fortran
-* Groovy
 * J
 * Kotlin
-* Lua
 * OCaml
 * Octave
 * <s>R</s>
 * Rust
+* <s>x86 assembly</s>
