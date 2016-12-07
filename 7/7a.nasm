@@ -25,33 +25,40 @@ _start:
         ; Program state:
         ;   eax: count of IPs supporting TLS
         mov eax, 0
-        jmp print_int
-        jmp exit
+main_loop:
+        call read
+        cmp byte [readbuf], 0
+        jz main_loop_end
+        cmp byte [readbuf], 10 ; newline
+        jnz main_loop_not_newline
+        add eax, 1
+main_loop_not_newline:
+        jmp main_loop
+main_loop_end:
+        call print_eax
+        call exit
 
         ; Reads a character into readbuf.
-        ; Clobbers all registers.
+        ; 0 means end of file.
 read:
+        pusha
         mov eax, 3 ; read
         mov ebx, 0 ; stdin
         mov ecx, readbuf
         mov edx, 1
         int 0x80
-
-        ; Writes the character in readbuf.
-        ; Clobbers all registers.
-write:
-        mov eax, 4 ; write
-        mov ebx, 1 ; stdout
-        mov ecx, readbuf
-        mov edx, 1
-        int 0x80
+        cmp eax, 0
+        jnz read_return
+        mov [readbuf], byte 0
+read_return:
+        popa
+        ret
 
         ; Prints eax in decimal.
-        ; Clobbers all registers.
-print_int:
+print_eax:
         mov edx, 1
         mov ecx, printbuf_end
-print_int_loop:
+print_eax_loop:
         push edx
         push ecx
         mov dx, 0
@@ -64,10 +71,11 @@ print_int_loop:
         pop edx
         add edx, 1
         cmp eax, 0
-        jnz print_int_loop
+        jnz print_eax_loop
         mov eax, 4 ; write
         mov ebx, 1 ; stdout
         int 0x80
+        ret
 
 exit:
         mov eax, 1 ; exit syscall
