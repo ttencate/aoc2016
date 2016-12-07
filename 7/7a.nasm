@@ -22,21 +22,86 @@ section .text
         ;   eax: return value
 
 _start:
-        ; Program state:
+        ; Global state:
         ;   eax: count of IPs supporting TLS
         mov eax, 0
 main_loop:
         call read
         cmp byte [readbuf], 0
         jz main_loop_end
-        cmp byte [readbuf], 10 ; newline
-        jnz main_loop_not_newline
-        add eax, 1
-main_loop_not_newline:
+        call parse_line
         jmp main_loop
 main_loop_end:
         call print_eax
         call exit
+
+        ; Expects first char of line in readbuf.
+        ; Runs until newline is in readbuf.
+        ; Increments eax if a TLS is found.
+parse_line:
+        ; bl tracks whether we're inside square brackets.
+        mov bl, 0
+        ; bh tracks TLS state:
+        ;   0 unknown
+        ;   1 ABBA found in square brackets, not outside (TLS candidate)
+        ;   2 ABBA found inside square brackets (definitely not TLS)
+        mov bh, 0
+parse_line_loop:
+        cmp byte [readbuf], 10 ; newline
+        jz parse_line_end
+
+        cmp byte [readbuf], 91 ; [
+        jnz parse_line_no_open
+        mov bl, 1
+        call read
+        jmp parse_line_loop
+parse_line_no_open:
+
+        cmp byte [readbuf], 93 ; ]
+        jnz parse_line_no_close
+        mov bl, 0
+        call read
+        jmp parse_line_loop
+parse_line_no_close:
+
+        call detect_abba
+        cmp ecx, 1
+        jnz parse_line_loop
+        ; ABBA detected
+        cmp bl, 1
+        jz parse_line_abba_in_brackets
+        ; ABBA detected outside brackets
+        cmp bh, 0
+        jnz parse_line_loop
+        ; ABBA detected outside brackets and not seen before
+        mov bh, 1
+        jmp parse_line_loop
+parse_line_abba_in_brackets:
+        mov bh, 2
+        jmp parse_line_loop
+
+parse_line_end:
+        cmp bh, 1
+        jnz parse_line_no_tls
+        add eax, 1
+parse_line_no_tls:
+        ret
+
+        ; Expects first letter in readbuf.
+        ; Reads until readbuf is not a letter.
+        ; Sets ecx to 1 if abba is found, 0 otherwise.
+detect_abba:
+        mov ecx, 0
+
+detect_abba_loop:
+        cmp byte [readbuf], 97 ; 'a'
+        jc detect_abba_end
+        mov ecx, 1
+        call read
+        jmp detect_abba_loop
+
+detect_abba_end:
+        ret
 
         ; Reads a character into readbuf.
         ; 0 means end of file.
