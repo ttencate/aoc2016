@@ -41,7 +41,7 @@ Languages I've never or almost never used before:
 * Elixir
 * Erlang
 * F#
-* Fortran
+* <s>Fortran 90</s>
 * J
 * Kotlin
 * OCaml
