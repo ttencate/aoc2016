@@ -36,7 +36,6 @@ Languages I've never or almost never used before:
 * Ada
 * Clojure
 * Cobol
-* Common Lisp
 * D
 * Elixir
 * Erlang
@@ -48,4 +47,6 @@ Languages I've never or almost never used before:
 * Octave
 * <s>R</s>
 * Rust
+* Scala
+* Scheme
 * <s>x86 assembly</s>
