@@ -1,52 +1,51 @@
 # Advent of Code 2016
 
-These are my solutions to [Advent of
-Code 2016](http://adventofcode.com/2016) puzzles.
+[Advent of Code 2016](http://adventofcode.com/2016) is a programming contest,
+in which a new puzzle comes online every day from 1 until 25 December. These
+are my solutions to the puzzles.
 
 At some point I thought it would be fun to do each in a different
 language, but I'm not sure I'll have the time to learn a few new
 ones. I have a few solutions in Python already, so I'd have to
 port those.
 
-Languages I'm comfortable with:
+Languages I might still use, roughly in order of decreasing preference (based
+both on what I know, and what might be suitable for such puzzles):
 
-* BASIC
-* C
+* JavaScript
 * C#
 * C++
+* Java
 * Go
 * Haskell
+* C
 * Haxe
-* Java
-* JavaScript
-* <s>Python</s>
 * Ruby
-* <s>Sh (bash and common shell utilities)</s>
-
-Languages I've touched before, but am not intimately familiar with:
-
+* Scala
 * Groovy
 * Lua
 * Perl
 * PHP
-
-Languages I've never or almost never used before:
-
+* BASIC
+* D
+* OCaml
+* Clojure
+* Elixir
+* F#
+* Kotlin
+* Octave
+* Rust
+* Erlang
+* J
+* Scheme
 * APL
 * Ada
-* Clojure
 * Cobol
-* D
-* Elixir
-* Erlang
-* F#
+
+Used:
+
 * <s>Fortran 90</s>
-* J
-* Kotlin
-* OCaml
-* Octave
+* <s>Python</s>
 * <s>R</s>
-* Rust
-* Scala
-* Scheme
+* <s>Sh (bash and common shell utilities)</s>
 * <s>x86 assembly</s>
