@@ -4,7 +4,7 @@ PROGRAM eight
       LOGICAL, DIMENSION(50) :: row
       LOGICAL, DIMENSION(6) :: column
       CHARACTER(LEN=100) :: line, command, direction
-      INTEGER :: index, width, height, coord, amount
+      INTEGER :: index, width, height, coord, amount, i, j
 
       screen = SPREAD(SPREAD(.FALSE., 1, 6), 2, 50)
       DO
@@ -36,5 +36,14 @@ PROGRAM eight
           END IF
         END IF
       END DO
-100   WRITE(*, *) COUNT(screen)
+100   DO, i=1,6
+        DO, j=1,50
+          IF (screen(i, j)) THEN
+            WRITE(*, '(A1)', ADVANCE='NO') '#'
+          ELSE
+            WRITE(*, '(A1)', ADVANCE='NO') '.'
+          END IF
+        END DO
+        WRITE(*, *)
+      END DO
 END PROGRAM
