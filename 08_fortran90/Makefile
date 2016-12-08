@@ -1,5 +1,5 @@
 .PHONY: all
-all: 8a 8b
+all: 08a 08b
 
-8%: 8%.f90
+08%: 08%.f90
 	gfortran -o $@ $<

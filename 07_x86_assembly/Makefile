@@ -1,7 +1,7 @@
 .PHONY: all
-all: 7a 7b
+all: 07a 07b
 
-7%: 7%.o
+07%: 07%.o
 	ld -m elf_i386 -o $@ $<
 
 %.o: %.nasm
