@@ -1,5 +1,4 @@
-This directory contains the solutions for [day
-8](http://adventofcode.com/2016/day/8) in Fortran 90.
+# [Day 8](http://adventofcode.com/2016/day/8) in Fortran 90
 
 I had used Fortran before, briefly, in a class about 10 years ago. I knew that
 it is suitable for matrix manipulation, and since our LCD screen is just a

@@ -1,10 +1,9 @@
-This directory contains the solutions for [day
-7](http://adventofcode.com/2016/day/7) in pure 80386 assembly language (nasm
-dialect, and without any use of the C library)
+# [Day 7](http://adventofcode.com/2016/day/7) in 80386 assembly language (nasm, no C library)
 
 Although I did have prior experience with some assembly languages (Z80, 6502,
 as well as the fictional TIS-100 and SHENZHEN I/O from Zachtronics games), I
-had never touched x86 before, so it took several hours to write all this.
+had never touched x86 before, so it took several hours to get the hang of it
+and write all this.
 
 The first part of the puzzle didn't require scanning back and forth, so I could
 just read the input character by character and use a kind of state machine to
