@@ -19,4 +19,6 @@ valid marker.
 
 For the second part, a recursive algorithm is needed. This doesn't fit well
 with my read-one-byte-at-a-time approach, so let's get the entire input into a
-buffer and work on slices into that.
+buffer and work on slices into that. After rewriting the algorithm in this way,
+making the change to use the decompressed length instead of the raw length was
+trivial.

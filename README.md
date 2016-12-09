@@ -34,7 +34,6 @@ both on what I know, and what might be suitable for such puzzles):
 * F#
 * Kotlin
 * Octave
-* Rust
 * Erlang
 * J
 * Scheme
@@ -44,8 +43,9 @@ both on what I know, and what might be suitable for such puzzles):
 
 Used:
 
-* <s>Fortran 90</s>
-* <s>Python</s>
-* <s>R</s>
-* <s>Sh (bash and common shell utilities)</s>
-* <s>x86 assembly</s>
+* Fortran 90
+* Python
+* R
+* Rust
+* Sh (bash and common shell utilities)
+* x86 assembly
