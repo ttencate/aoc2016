@@ -21,7 +21,6 @@ both on what I know, and what might be suitable for such puzzles):
 * C
 * Haxe
 * Ruby
-* Scala
 * Groovy
 * Lua
 * Perl
@@ -47,5 +46,6 @@ Used:
 * Python
 * R
 * Rust
+* Scala
 * Sh (bash and common shell utilities)
 * x86 assembly
