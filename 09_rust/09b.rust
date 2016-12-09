@@ -1,0 +1,45 @@
+use std::io;
+use std::io::prelude::*;
+use std::str;
+
+fn parse_int(bytes: &[u8]) -> (&[u8], usize) {
+  let end_index = bytes.iter()
+    .position(|byte| !(*byte as char).is_digit(10))
+    .expect("no end found") as usize;
+  let number_part = &bytes[..end_index];
+  let remainder = &bytes[end_index..];
+  let int = str::from_utf8(number_part)
+    .expect("utf-8 error")
+    .parse::<usize>()
+    .expect("parse error");
+  return (remainder, int);
+}
+
+fn decompressed_length(mut bytes: &[u8]) -> usize {
+  let mut count = 0;
+  while bytes.len() > 0 {
+    let byte = bytes[0];
+    let char = byte as char;
+    if char == '(' {
+      bytes = &bytes[1..];
+      let (bytes_after_length, length) = parse_int(bytes);
+      bytes = &bytes_after_length[1..]; // 'x'
+      let (bytes_after_repeat, repeats) = parse_int(bytes);
+      bytes = &bytes_after_repeat[1..]; // ')'
+      bytes = &bytes[length..];
+      count += length * repeats;
+    } else if !char.is_whitespace() {
+      count += 1;
+      bytes = &bytes[1..];
+    } else {
+      bytes = &bytes[1..];
+    }
+  }
+  return count;
+}
+
+fn main() {
+  let mut input = Vec::new();
+  io::stdin().read_to_end(input.as_mut()).expect("read error");
+  println!("{}", decompressed_length(&input));
+}

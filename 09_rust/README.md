@@ -16,3 +16,7 @@ The first part of the problem was straightforward. Fortunately, each run of
 digits is followed by a non-digit character, so I don't need to worry about
 gobbling that up as a terminator. And each opening parenthesis indeed starts a
 valid marker.
+
+For the second part, a recursive algorithm is needed. This doesn't fit well
+with my read-one-byte-at-a-time approach, so let's get the entire input into a
+buffer and work on slices into that.
