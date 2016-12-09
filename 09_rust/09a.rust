@@ -1,16 +1,43 @@
 use std::io;
 use std::io::prelude::*;
 
-fn main() {
-  let mut char = [0; 1];
+fn read_char() -> Option<char> {
+  return io::stdin().bytes().next()
+    .map(|result| result.expect("read error"))
+    .map(|byte| byte as char)
+}
+
+fn read_int() -> i32 {
+  let mut str = String::new();
   loop {
-    match io::stdin().read_exact(&mut char) {
-      Ok(_) => {
-        let _ = io::stdout().write_all(&char);
+    let char = read_char().expect("unexpected eof");
+    if !char.is_digit(10) {
+      break;
+    }
+    str.push(char);
+  }
+  return i32::from_str_radix(&str, 10).expect("int parse error");
+}
+
+fn main() {
+  let mut count = 0;
+  loop {
+    match read_char() {
+      Some(char) => {
+        if char == '(' {
+          let length = read_int();
+          let repeats = read_int();
+          count += repeats * length;
+          let mut buf = vec![0; length as usize];
+          io::stdin().read_exact(buf.as_mut_slice()).expect("read error");
+        } else if !char.is_whitespace() {
+          count += 1;
+        }
       }
-      Err(_) => {
+      None => {
         break;
       }
     }
   }
+  println!("{}", count);
 }
