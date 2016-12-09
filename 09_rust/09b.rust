@@ -26,8 +26,9 @@ fn decompressed_length(mut bytes: &[u8]) -> usize {
       bytes = &bytes_after_length[1..]; // 'x'
       let (bytes_after_repeat, repeats) = parse_int(bytes);
       bytes = &bytes_after_repeat[1..]; // ')'
+      let bytes_to_decompress = &bytes[..length];
       bytes = &bytes[length..];
-      count += length * repeats;
+      count += decompressed_length(bytes_to_decompress) * repeats;
     } else if !char.is_whitespace() {
       count += 1;
       bytes = &bytes[1..];
