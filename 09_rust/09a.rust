@@ -1,0 +1,16 @@
+use std::io;
+use std::io::prelude::*;
+
+fn main() {
+  let mut char = [0; 1];
+  loop {
+    match io::stdin().read_exact(&mut char) {
+      Ok(_) => {
+        let _ = io::stdout().write_all(&char);
+      }
+      Err(_) => {
+        break;
+      }
+    }
+  }
+}
