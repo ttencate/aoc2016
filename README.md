@@ -37,10 +37,10 @@ both on what I know, and what might be suitable for such puzzles):
 * J
 * APL
 * Ada
-* Cobol
 
 Used:
 
+* Cobol
 * Fortran 90
 * Pascal
 * Python

@@ -24,4 +24,12 @@ value +000.`. The `S999` bit means "a sign, followed by three digits"; this
 specifies how the variable will be laid out in memory. As a string, unless you
 write `usage is computational`, but why should I? This format, sadly, makes
 reading the variable-length integers in the input difficult, but I'm not going
-to cheat by formatting the input better.
+to cheat by formatting the input in a more suitable way. I _am_ going to cheat
+by assuming limits on the length of the input and the length of each individual
+command, though.
+
+Anyway, after reading the input correctly, running the actual commands was
+pretty straightforward. For the second part of the problem, I needed to keep
+track of where we've been, which of course is what we can use a table for.
+
+So, I've COBOLed. Let's call it a once in a lifetime experience. I hope.
