@@ -16,4 +16,16 @@ that two bots are ready at the same time (have two values to give) and the
 order in which we run their instructions matters. It could even be that a bot
 receives more than two values; I'm going to assume that this doesn't happen.
 
-Lack of array push, pop and find operations makes the code a lot longer than it should have been. Proper set support would also have been nice, but unfortunately there's no way to count the number of elements in a set in Free Pascal. And why is there no built-in array sort procedure? Fortunately I'm sorting only two values.
+Lack of array push, pop and find operations makes the code a lot longer than it
+should have been. Proper set support would also have been nice, but
+unfortunately there's no way to count the number of elements in a set in Free
+Pascal. And why is there no built-in array sort procedure? Fortunately I'm
+sorting only two values.
+
+For the second part, hardly any modifications were needed. The biggest issue
+was that the `integer` type is signed 16 bits, which was too small to contain
+the output.
+
+In conclusion, Pascal is not a language I'd like to use again. Basic amenities
+are missing, and although it contains some good ideas, it hasn't kept up with
+the times.
