@@ -1,13 +1,9 @@
-# Advent of Code 2016
+# Polyglot Advent of Code 2016
 
 [Advent of Code 2016](http://adventofcode.com/2016) is a programming contest,
 in which a new puzzle comes online every day from 1 until 25 December. These
-are my solutions to the puzzles.
-
-At some point I thought it would be fun to do each in a different
-language, but I'm not sure I'll have the time to learn a few new
-ones. I have a few solutions in Python already, so I'd have to
-port those.
+are my solutions to the puzzles. As an additional challenge, I'm solving each
+day's puzzle in a different programming language.
 
 Languages I might still use, roughly in order of decreasing preference (based
 both on what I know, and what might be suitable for such puzzles):
