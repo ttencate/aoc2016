@@ -34,7 +34,6 @@ both on what I know, and what might be suitable for such puzzles):
 * Kotlin
 * Octave
 * Erlang
-* Pascal
 * J
 * APL
 * Ada
@@ -43,6 +42,7 @@ both on what I know, and what might be suitable for such puzzles):
 Used:
 
 * Fortran 90
+* Pascal
 * Python
 * R
 * Rust
