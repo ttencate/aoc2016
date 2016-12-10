@@ -34,8 +34,8 @@ both on what I know, and what might be suitable for such puzzles):
 * Kotlin
 * Octave
 * Erlang
+* Pascal
 * J
-* Scheme
 * APL
 * Ada
 * Cobol
@@ -47,5 +47,6 @@ Used:
 * R
 * Rust
 * Scala
+* Scheme
 * Sh (bash and common shell utilities)
 * x86 assembly
