@@ -30,10 +30,12 @@ struct ItemSet {
   uint mask;
 
   void add(Item item) {
+    assert(!contains(item));
     mask |= item;
   }
 
   void remove(Item item) {
+    assert(contains(item));
     mask &= ~item;
   }
 
@@ -161,10 +163,13 @@ void main() {
     .array();
   numElements = to!uint(elements.length);
 
-  auto startState = new State(floors[0..NUM_FLOORS], BOTTOM_FLOOR, null);
+  auto startState = State(floors[0..NUM_FLOORS], BOTTOM_FLOOR, null);
+
+  bool[State] visited;
 
   auto queue = DList!(State*)();
-  queue.insertBack(startState);
+  queue.insertBack(startState.dup);
+  visited[startState] = true;
   while (!queue.empty) {
     auto state = queue.front();
     queue.removeFront();
@@ -190,8 +195,9 @@ void main() {
       foreach (Item item; items) {
         State nextState = baseNextState;
         nextState.moveItem(item, fromFloor, toFloor);
-        if (nextState.isSafe) {
+        if (!(nextState in visited) && nextState.isSafe) {
           queue.insertBack(nextState.dup);
+          visited[nextState] = true;
         }
       }
 
@@ -202,8 +208,9 @@ void main() {
           }
           State nextState = baseNextState;
           nextState.moveItem(item1 | item2, fromFloor, toFloor);
-          if (nextState.isSafe) {
+          if (!(nextState in visited) && nextState.isSafe) {
             queue.insertBack(nextState.dup);
+            visited[nextState] = true;
           }
         }
       }
