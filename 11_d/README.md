@@ -19,7 +19,8 @@ on the example input. Sadly, it was too slow on the real thing. I suspect that
 the BFS wastes too much time on states it's already visited. I could avoid this
 by keeping a set of visited states, which I'd need for A\* anyway.
 Unfortunately, it made the program take about twice as long on the example
-input.
+input. So I turned to a full A\* algorithm, which found the solution in under 4
+seconds. I'm sure this can be optimized significantly, but I'm happy.
 
 First impressions of the D language: it's nice, but it tries to repackage all
 features that C++ has (and then some), so it is a big and complex language.

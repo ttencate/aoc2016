@@ -43,6 +43,16 @@ struct ItemSet {
     return !!(mask & item);
   }
 
+  uint count() const {
+    uint count = 0;
+    foreach (ulong bit; iota(0, numElements * 2)) {
+      if (contains(to!Item(1 << bit))) {
+        count++;
+      }
+    }
+    return count;
+  }
+
   bool isSafe() const pure {
     uint generators = mask & GENERATOR_MASK;
     uint unpairedMicrochips = mask & MICROCHIP_MASK & ~(generators << 1);
@@ -71,7 +81,6 @@ struct ItemSet {
 struct State {
   ItemSet[NUM_FLOORS] floors;
   uint currentFloor;
-  State* prevState;
 
   string toString() const {
     char[] output;
@@ -96,18 +105,6 @@ struct State {
 
   bool isEndState() const {
     return floors[TOP_FLOOR].isFull;
-  }
-  
-  uint numSteps() const {
-    return prevState ? 1 + prevState.numSteps : 0;
-  }
-
-  State* dup() {
-    State* copy = new State();
-    copy.floors = floors;
-    copy.currentFloor = currentFloor;
-    copy.prevState = prevState;
-    return copy;
   }
 }
 
@@ -145,15 +142,24 @@ void moveItem(ref State state, Item item, uint from, uint to) {
   state.floors[to].add(item);
 }
 
-void printWithHistory(State* endState) {
-  auto stack = Array!(State*)();
-  stack.insertBack(endState);
-  while (stack.back.prevState) {
-    stack.insertBack(stack.back.prevState);
+uint heuristicCostEstimate(State state) {
+  uint itemSteps = 0;
+  foreach (floor, items; enumerate(state.floors[])) {
+    itemSteps += items.count * (TOP_FLOOR - floor);
   }
-  foreach_reverse (state; stack) {
-    writeln(*state);
+  return itemSteps / 2; // Lift carries at most two items at a time.
+}
+
+void printBacktrace(State state, State[State] cameFrom) {
+  auto stack = Array!(State)([state]);
+  while (state in cameFrom) {
+    state = cameFrom[state];
+    stack.insertBack(state);
   }
+  foreach_reverse (previousState; stack) {
+    writeln(previousState);
+  }
+  writeln(stack.length - 1);
 }
 
 void main() {
@@ -163,55 +169,70 @@ void main() {
     .array();
   numElements = to!uint(elements.length);
 
-  auto startState = State(floors[0..NUM_FLOORS], BOTTOM_FLOOR, null);
+  auto start = State(floors[0..NUM_FLOORS], BOTTOM_FLOOR);
 
-  bool[State] visited;
+  uint[State] gScore;
+  uint[State] fScore;
+  bool[State] closedSet;
+  bool[State] openSet;
+  bool less(State a, State b) { return fScore.get(a, uint.max) > fScore.get(b, uint.max); };
+  auto queue = heapify!(less)(Array!State());
+  State[State] cameFrom;
 
-  auto queue = DList!(State*)();
-  queue.insertBack(startState.dup);
-  visited[startState] = true;
+  fScore[start] = heuristicCostEstimate(start);
+  gScore[start] = 0;
+  queue.insert(start);
+  openSet[start] = true;
+
   while (!queue.empty) {
-    auto state = queue.front();
-    queue.removeFront();
+    auto current = queue.front;
 
-    if (state.isEndState()) {
-      printWithHistory(state);
-      writeln(state.numSteps);
+    if (current.isEndState()) {
+      printBacktrace(current, cameFrom);
       return;
     }
 
-    uint fromFloor = state.currentFloor;
+    openSet.remove(current);
+    queue.removeFront();
+    closedSet[current] = true;
+
+    uint fromFloor = current.currentFloor;
     foreach (uint toFloor; [fromFloor + 1, fromFloor - 1]) {
       if (toFloor < BOTTOM_FLOOR || toFloor > TOP_FLOOR) {
         continue;
       }
 
-      State baseNextState = *state;
-      baseNextState.prevState = state;
+      State baseNextState = current;
       baseNextState.currentFloor = toFloor;
 
-      auto items = state.floors[state.currentFloor];
-
-      foreach (Item item; items) {
-        State nextState = baseNextState;
-        nextState.moveItem(item, fromFloor, toFloor);
-        if (!(nextState in visited) && nextState.isSafe) {
-          queue.insertBack(nextState.dup);
-          visited[nextState] = true;
-        }
-      }
-
+      auto items = current.floors[current.currentFloor];
       foreach (Item item1; items) {
         foreach (Item item2; items) {
-          if (item2 <= item1) {
+          if (item2 < item1) {
             continue;
           }
-          State nextState = baseNextState;
-          nextState.moveItem(item1 | item2, fromFloor, toFloor);
-          if (!(nextState in visited) && nextState.isSafe) {
-            queue.insertBack(nextState.dup);
-            visited[nextState] = true;
+
+          State neighbor = baseNextState;
+          neighbor.moveItem(item1 | item2, fromFloor, toFloor);
+          if (!neighbor.isSafe) {
+            continue;
           }
+
+          if (neighbor in closedSet) {
+            continue;
+          }
+
+          auto tentativeGScore = gScore[current] + 1;
+          if (!(neighbor in openSet)) {
+            openSet[neighbor] = true;
+            queue.insert(neighbor);
+          } else if (tentativeGScore >= gScore.get(neighbor, uint.max)) {
+            continue;
+          }
+
+          cameFrom[neighbor] = current;
+          gScore[neighbor] = tentativeGScore;
+          fScore[neighbor] = gScore[neighbor] + heuristicCostEstimate(neighbor);
         }
       }
     }
