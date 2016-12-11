@@ -7,8 +7,11 @@ day's puzzle in a different programming language.
 
 ## Languages
 
-Languages I might still use, roughly in order of decreasing preference (based
-both on what I know, and what might be suitable for such puzzles):
+I'm using only "mainstream" programming languages, not esoteric or toy
+languages, because this will be hard enough as is. However, I do include some
+older languages like COBOL in the list out of historic interest. Languages I
+might still use, roughly in order of decreasing preference (based both on what
+I know, and what might be suitable for such puzzles):
 
 * JavaScript
 * C#
@@ -37,7 +40,7 @@ both on what I know, and what might be suitable for such puzzles):
 
 Used:
 
-* Cobol
+* COBOL
 * D
 * Fortran 90
 * Pascal
