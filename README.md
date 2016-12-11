@@ -5,6 +5,8 @@ in which a new puzzle comes online every day from 1 until 25 December. These
 are my solutions to the puzzles. As an additional challenge, I'm solving each
 day's puzzle in a different programming language.
 
+## Languages
+
 Languages I might still use, roughly in order of decreasing preference (based
 both on what I know, and what might be suitable for such puzzles):
 
@@ -22,7 +24,6 @@ both on what I know, and what might be suitable for such puzzles):
 * Perl
 * PHP
 * BASIC
-* D
 * OCaml
 * Clojure
 * Elixir
@@ -37,6 +38,7 @@ both on what I know, and what might be suitable for such puzzles):
 Used:
 
 * Cobol
+* D
 * Fortran 90
 * Pascal
 * Python
@@ -46,3 +48,10 @@ Used:
 * Scheme
 * Sh (bash and common shell utilities)
 * x86 assembly
+
+## Rules
+
+* Input should be read from stdin if at all possible. Otherwise, read from a
+  file named `input`.
+* The input file must be read and parsed exactly as provided. No modifications
+  are allowed.
