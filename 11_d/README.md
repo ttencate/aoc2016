@@ -22,6 +22,10 @@ Unfortunately, it made the program take about twice as long on the example
 input. So I turned to a full A\* algorithm, which found the solution in under 4
 seconds. I'm sure this can be optimized significantly, but I'm happy.
 
+Then part two. It's just bigger input, no algorithmic changes needed. But in
+line with my own rules, I modified the program instead. After that, runtime
+went up from 4 seconds to about 4 minutes, but hey, I can live with that too!
+
 First impressions of the D language: it's nice, but it tries to repackage all
 features that C++ has (and then some), so it is a big and complex language.
 Fortunately the complexity does not manifest in the same way as C++, so it
