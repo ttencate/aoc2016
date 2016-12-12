@@ -9,9 +9,11 @@ day's puzzle in a different programming language.
 
 I'm using only "mainstream" programming languages, not esoteric or toy
 languages, because this will be hard enough as is. However, I do include some
-older languages like COBOL in the list out of historic interest. Languages I
-might still use, roughly in order of decreasing preference (based both on what
-I know, and what might be suitable for such puzzles):
+older languages in the list out of historic interest. Plus, a free (as in beer)
+implementation for Linux has to exist.
+
+Languages I might still use, roughly in order of decreasing preference (based
+both on what I know, and what might be suitable for such puzzles):
 
 * JavaScript
 * C#
@@ -30,10 +32,18 @@ I know, and what might be suitable for such puzzles):
 * OCaml
 * Clojure
 * Elixir
+* REBOL
+* Forth
 * F#
 * Kotlin
 * Octave
 * Erlang
+* Icon
+* CUDA
+* TCL
+* Smalltalk
+* Julia
+* AWK
 * J
 * APL
 * Ada
