@@ -29,7 +29,10 @@ line each time. Instead of looking for a way to force re-evaluation for each
 line, I simply put in the `fd` parameter and the problem went away.
 
 Anyway, after I had a list of strings, the rest was smooth sailing and the
-program gave the right answer on the first try.
+program gave the right answer on the first try in under 2 seconds.
+
+The second part was an easy change, but did increase runtime to over a minute.
+Not that there's much I could have done about that.
 
 First impressions after working with OCaml: conceptually similar to Haskell,
 but I haven't seen anything it does better than Haskell. The syntax is a bit

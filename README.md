@@ -29,7 +29,6 @@ both on what I know, and what might be suitable for such puzzles):
 * Perl
 * PHP
 * BASIC
-* OCaml
 * Clojure
 * Elixir
 * REBOL
@@ -53,6 +52,7 @@ Used:
 * COBOL
 * D
 * Fortran 90
+* OCaml
 * Pascal
 * Python
 * R
