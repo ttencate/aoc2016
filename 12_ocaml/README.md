@@ -32,7 +32,10 @@ Anyway, after I had a list of strings, the rest was smooth sailing and the
 program gave the right answer on the first try in under 2 seconds.
 
 The second part was an easy change, but did increase runtime to over a minute.
-Not that there's much I could have done about that.
+All optimizations I could think of would have been micro-optimizations. But I
+did rewrite the input program into C (see `bonus.c`), just for fun; it ran the
+first part in under a millisecond and the second part in 33 milliseconds, over
+2500 times faster than the OCaml version! Behold the power of a JITter.
 
 First impressions after working with OCaml: conceptually similar to Haskell,
 but I haven't seen anything it does better than Haskell. The syntax is a bit
