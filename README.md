@@ -24,7 +24,6 @@ both on what I know, and what might be suitable for such puzzles):
 * C
 * Haxe
 * Ruby
-* Groovy
 * Lua
 * Perl
 * PHP
@@ -52,6 +51,7 @@ Used:
 * COBOL
 * D
 * Fortran 90
+* Groovy
 * OCaml
 * Pascal
 * Python
