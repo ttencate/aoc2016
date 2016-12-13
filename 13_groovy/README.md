@@ -16,6 +16,20 @@ encountering in Gradle files.
 So... it's obvious what is required in this puzzle. We're writing another path
 finding algorithm. The distance "as the taxicab crow flies" from `1, 1` to `31,
 39` is small enough that a simple Dijkstra should work; no need to bother with
-A\* or other optimizations. The key thing here is that the grid is infinite, so
-we can't represent anything as a matrix. Instead, we'll use sets and maps of
-coordinate pairs.
+A\* or other optimizations.
+
+The key thing here is that the grid is infinite, so we can't represent anything
+as a matrix. Instead, we'll use sets and maps of coordinate pairs. Using the
+`Tuple2` class as a base for implementing my coordinate pair, I don't have to
+worry about defining my own `equals` and `hashCode`. And using the standard
+Java data structures like `LinkedList` and `HashMap`, the search algorithm is
+easy to build.
+
+For the second part of the problem, I just need to modify it to stop after 50
+steps, and finally count the number of locations visited (i.e. to which a
+distance was computed).
+
+This exercise was very much worth it. It helped me get a better mental model of
+how Groovy works, and how it maps onto the Java concepts I'm intimately
+familiar with. I also learned that you can pretty much just write Java in
+Groovy if you want, so in case of doubt that's always an option.
