@@ -220,7 +220,7 @@ int main() {
 
   err = clSetKernelArg(kernel, 0, sizeof(salt_buffer), &salt_buffer);
   check_cl_error(err);
-  uint32_t iterations = 0;
+  uint32_t iterations = 2016;
   err = clSetKernelArg(kernel, 2, sizeof(iterations), &iterations);
   check_cl_error(err);
   err = clSetKernelArg(kernel, 3, sizeof(hex_buffer), &hex_buffer);

@@ -182,7 +182,7 @@ char *int_to_str(char *out, uint i) {
   return end;
 }
 
-__kernel void compute_md5(read_only __constant char const *salt, uint start_index, write_only __global char *out) {
+__kernel void compute_md5(read_only __constant char const *salt, uint start_index, uint iterations, write_only __global char *out) {
   uint id = get_global_id(0);
   uint index = start_index + id;
 
@@ -200,6 +200,11 @@ __kernel void compute_md5(read_only __constant char const *salt, uint start_inde
 
   char hex[33];
   hex[32] = '\0';
+  for (int i = 0; i < iterations; i++) {
+    md5_to_hex(binary_md5, hex);
+    md5(hex, 32, binary_md5);
+  }
+
   md5_to_hex(binary_md5, hex);
   // printf("%d %s %s\n", index, input, hex);
 
