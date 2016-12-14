@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -150,7 +151,42 @@ void print_cl_build_log(cl_program program, cl_device_id device) {
   }
 }
 
+char find_triplet(char const *hash) {
+  char c = '\0';
+  int count = 0;
+  for (int i = 0; i < 32; i++) {
+    if (hash[i] != c) {
+      c = hash[i];
+      count = 1;
+    } else {
+      count++;
+      if (count == 3) {
+        return c;
+      }
+    }
+  }
+  return '\0';
+}
+
+bool contains_quintuplet(char const *hash, char const c) {
+  int count = 0;
+  for (int i = 0; i < 32; i++) {
+    if (hash[i] == c) {
+      count++;
+      if (count == 5) {
+        return true;
+      }
+    } else {
+      count = 0;
+    }
+  }
+  return false;
+}
+
 int main() {
+  // This must be big enough so the answer is contained within one batch. Hack hack.
+  const size_t batch_size = 30000;
+
   char *salt;
   scanf("%ms", &salt);
   size_t salt_size = strlen(salt);
@@ -179,13 +215,10 @@ int main() {
   cl_mem salt_buffer = clCreateBuffer(context, CL_MEM_READ_ONLY | CL_MEM_COPY_HOST_PTR, salt_size + 1, salt, &err);
   check_cl_error(err);
 
-  cl_mem hex_buffer = clCreateBuffer(context, CL_MEM_WRITE_ONLY, 32, NULL, &err);
+  cl_mem hex_buffer = clCreateBuffer(context, CL_MEM_WRITE_ONLY, 32 * batch_size, NULL, &err);
   check_cl_error(err);
 
   err = clSetKernelArg(kernel, 0, sizeof(salt_buffer), &salt_buffer);
-  check_cl_error(err);
-  uint32_t start_index = 1000;
-  err = clSetKernelArg(kernel, 1, sizeof(uint32_t), &start_index);
   check_cl_error(err);
   err = clSetKernelArg(kernel, 2, sizeof(hex_buffer), &hex_buffer);
   check_cl_error(err);
@@ -194,16 +227,38 @@ int main() {
   check_cl_error(err);
 
   size_t global_work_offset = 0;
-  size_t global_work_size = 1;
+  size_t global_work_size = batch_size;
   size_t local_work_size = 1;
+
+  char *hex = (char *) malloc(32 * batch_size);
+
+  uint32_t start_index = 0; 
+  err = clSetKernelArg(kernel, 1, sizeof(uint32_t), &start_index);
+  check_cl_error(err);
+
   err = clEnqueueNDRangeKernel(command_queue, kernel, 1, &global_work_offset, &global_work_size, &local_work_size, 0, NULL, NULL);
   check_cl_error(err);
 
-  char hex[33];
-  err = clEnqueueReadBuffer(command_queue, hex_buffer, CL_TRUE, 0, sizeof(hex) - 1, hex, 0, NULL, NULL);
+  err = clEnqueueReadBuffer(command_queue, hex_buffer, CL_TRUE, 0, 32 * batch_size, hex, 0, NULL, NULL);
   check_cl_error(err);
-  hex[32] = '\0';
-  printf("%s\n", hex);
+
+  int keys_found = 0;
+  for (int i = 0; i < batch_size - 1000; i++) {
+    char triplet = find_triplet(hex + 32 * i);
+    if (triplet) {
+      for (int k = i + 1; k <= i + 1000; k++) {
+        char const *hash = hex + 32 * k;
+        if (contains_quintuplet(hash, triplet)) {
+          keys_found++;
+          break;
+        }
+      }
+    }
+    if (keys_found == 64) {
+      printf("%d\n", i);
+      break;
+    }
+  }
 
   clReleaseContext(context);
 

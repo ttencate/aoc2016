@@ -192,9 +192,8 @@ __kernel void compute_md5(read_only __constant char const *salt, uint start_inde
     *l++ = *salt++;
   }
   l = int_to_str(l, index);
+  *l = '\0';
   uint length = l - input;
-
-  printf("Kernel % 4d running with input \"%s\" (length %d)\n", index, input, length);
 
   uint binary_md5[4];
   md5(input, length, binary_md5);
@@ -202,7 +201,7 @@ __kernel void compute_md5(read_only __constant char const *salt, uint start_inde
   char hex[33];
   hex[32] = '\0';
   md5_to_hex(binary_md5, hex);
-  printf("%d %s\n", index, hex);
+  // printf("%d %s %s\n", index, input, hex);
 
   char const *read = hex;
   __global char *write = out + 32 * id;
