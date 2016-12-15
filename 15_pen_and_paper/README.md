@@ -99,3 +99,10 @@ part was just another step:
 And yes, I did use a calculator for all this. A programmable one, even, a
 TI-83. If I find some time, I might code this up in TI-BASIC just to be sure
 that this entry really counts towards the Polyglot Challenge.
+
+By the way, I get the feeling there must be an even faster solution than
+testing all the possible values modulo the smallest of the two primes. The
+whole thing reminds me of my algebra classes in university, and the words
+"division modulo a prime" come to mind (for which indeed [a fast algorithm
+exists](https://en.wikipedia.org/wiki/Modular_multiplicative_inverse)). But I'd
+need a bit more time to figure out how exactly to apply that.
