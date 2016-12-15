@@ -30,3 +30,17 @@ to find out that _even_ if you pass a "list of lines" to
 sensible line numbers), you _still_ need newline characters attached to them.
 OpenCL simply concatenates the strings you pass it, without inserting line
 endings again.
+
+Another problem for me was understanding how exactly data passing works. Once I
+understood that you need to pass a `cl_mem` object, and that this becomes a
+pointer argument in OpenCL land, things went smoothly. I did have to write some
+library functions like `strcpy` inline because I couldn't figure out quickly
+enough how to pass `__constant` and `__global` pointers to them (apart from,
+perhaps, declaring the function to take these types of pointers too). Note:
+being able to call `printf` from your OpenCL code is a godsend.
+
+At last, the program worked and gave me the right solution in about a second,
+about a thousand times faster than the CPU-based Python solution would have
+been. Behold the power of the GPU! Seriously, it feels really awesome to be able
+to tap into this power so relatively easily. I'll probably be using it at some
+future point in my career.
