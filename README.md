@@ -55,6 +55,7 @@ Used:
 * Groovy
 * OCaml
 * Pascal
+* Pen and paper (and a calculator)
 * Python
 * R
 * Rust
