@@ -15,3 +15,10 @@ We could use a regular breadth-first search, but it's easy enough in a
 fancy-pants language like C# to drop in an A\* heuristic, so I'll do that from
 the start. But wait... no built-in priority queue implementation? Seriously? I
 could grab one off the internet, but where's the fun in that? I'll roll my own.
+Good practice. And guess what: the solution worked as soon as I got it to
+compile.
+
+So, onwards to part two! Imagine my surprise when all my cleverness turned out
+to be pointless: we are effectively asked to enumerate _all_ paths now! So I
+stripped out the now useless `MinHeap` code and dropped in a simple recursive
+method. Worked right away.
