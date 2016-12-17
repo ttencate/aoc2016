@@ -16,7 +16,6 @@ Languages I might still use, roughly in order of decreasing preference (based
 both on what I know, and what might be suitable for such puzzles):
 
 * JavaScript
-* C#
 * C++
 * Java
 * Go
@@ -47,6 +46,7 @@ both on what I know, and what might be suitable for such puzzles):
 
 Used:
 
+* C#
 * COBOL
 * D
 * Fortran 90
