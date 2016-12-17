@@ -20,7 +20,6 @@ both on what I know, and what might be suitable for such puzzles):
 * C++
 * Java
 * Go
-* Haskell
 * C
 * Haxe
 * Ruby
@@ -38,7 +37,6 @@ both on what I know, and what might be suitable for such puzzles):
 * Erlang
 * Icon
 * CUDA
-* OpenCL
 * TCL
 * Smalltalk
 * Julia
@@ -53,7 +51,9 @@ Used:
 * D
 * Fortran 90
 * Groovy
+* Haskell
 * OCaml
+* OpenCL
 * Pascal
 * Pen and paper (and a calculator)
 * Python
