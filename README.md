@@ -22,7 +22,6 @@ both on what I know, and what might be suitable for such puzzles):
 * C
 * Haxe
 * Ruby
-* Lua
 * Perl
 * PHP
 * BASIC
@@ -52,6 +51,7 @@ Used:
 * Fortran 90
 * Groovy
 * Haskell
+* Lua
 * OCaml
 * OpenCL
 * Pascal
