@@ -15,7 +15,6 @@ implementation for Linux has to exist.
 Languages I might still use, roughly in order of decreasing preference (based
 both on what I know, and what might be suitable for such puzzles):
 
-* JavaScript
 * C++
 * Java
 * Go
@@ -51,6 +50,7 @@ Used:
 * Fortran 90
 * Groovy
 * Haskell
+* JavaScript
 * Lua
 * OCaml
 * OpenCL
