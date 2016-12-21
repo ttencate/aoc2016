@@ -12,8 +12,8 @@ strings (oddly), but manipulating arrays is fine, so with a bit of `split` and
 
 Part Two was much more interesting! We now need to run backwards through the
 input and apply reverse operations. Of course, both `swap` operations are their
-own inverse, and so is the `reverse` operation. Rotating in reverse by a fixed
-number of steps and moving a letter are also easily reversible operations.
+own inverse, and so is the `reverse` operation. Rotating by a fixed number of
+steps and moving a letter are also easily reversible operations.
 
 That leaves us with the `rotate based on position of letter X` operation. As it
 turns out, this one is ambiguous! Consider output `abcde` and `rotate based on
