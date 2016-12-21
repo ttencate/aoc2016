@@ -20,8 +20,6 @@ both on what I know, and what might be suitable for such puzzles):
 * Go
 * C
 * Haxe
-* Ruby
-* Perl
 * PHP
 * BASIC
 * Clojure
@@ -56,8 +54,10 @@ Used:
 * OpenCL
 * Pascal
 * Pen and paper (and a calculator)
+* Perl
 * Python
 * R
+* Ruby
 * Rust
 * Scala
 * Scheme
