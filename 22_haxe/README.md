@@ -99,7 +99,7 @@ is the result:
 
 It's not even worth writing a pathfinding algorithm for this; I'll do it by
 hand. The operation we have available is moving the `_` by one step, swapping
-it with its target location.
+it with its target location, and avoiding any `#`.
 
 * Move 7 steps to the left.
 * Move 28 steps up, to the top row.
