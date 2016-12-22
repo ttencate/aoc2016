@@ -19,7 +19,6 @@ both on what I know, and what might be suitable for such puzzles):
 * Java
 * Go
 * C
-* Haxe
 * PHP
 * BASIC
 * Clojure
@@ -48,6 +47,7 @@ Used:
 * Fortran 90
 * Groovy
 * Haskell
+* Haxe
 * JavaScript
 * Lua
 * OCaml
