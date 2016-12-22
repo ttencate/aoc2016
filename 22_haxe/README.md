@@ -115,8 +115,8 @@ it with its target location, and avoiding any `#`.
   * Move 2 left.
   * Move 1 up.
 
-        ..._G.
-        ......
+            ..._G.
+            ......
 
 * Move 1 right.
 
