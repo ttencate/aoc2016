@@ -1,4 +1,4 @@
-all: TwentyTwoA.n
+all: TwentyTwoA.n TwentyTwoB.n
 
 %.n: %.hx
 	haxe -main $* -neko $@
