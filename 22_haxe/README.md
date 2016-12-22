@@ -105,8 +105,8 @@ it with its target location, and avoiding any `#`.
 * Move 28 steps up, to the top row.
 * Move 32 steps right, next to the `G`:
 
-    ...._G
-    ......
+        ...._G
+        ......
 
 * Repeat 33 times:
 
@@ -115,8 +115,8 @@ it with its target location, and avoiding any `#`.
   * Move 2 left.
   * Move 1 up.
 
-    ..._G.
-    ......
+        ..._G.
+        ......
 
 * Move 1 right.
 
