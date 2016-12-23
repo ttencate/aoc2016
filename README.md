@@ -18,7 +18,6 @@ both on what I know, and what might be suitable for such puzzles):
 * C++
 * Java
 * Go
-* C
 * PHP
 * BASIC
 * Clojure
@@ -41,6 +40,7 @@ both on what I know, and what might be suitable for such puzzles):
 
 Used:
 
+* C
 * C#
 * COBOL
 * D
