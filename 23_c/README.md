@@ -9,7 +9,7 @@ parsing was the main hurdle. Once I got the right output on the example, I ran
 it on the real input and found the right answer there too.
 
 Then Part Two... changing the initial value of `a` to `12` was easy. But yes,
-it took a while to run... "don't bunnies usually multiply?" What could that
+it took a while to run... "Don't bunnies usually multiply?" What could that
 mean? Should `inc` be interpreted as `mul`? But it has only one argument, so
 multiply what with what?
 
