@@ -15,7 +15,6 @@ implementation for Linux has to exist.
 Languages I might still use, roughly in order of decreasing preference (based
 both on what I know, and what might be suitable for such puzzles):
 
-* C++
 * Java
 * Go
 * PHP
@@ -41,6 +40,7 @@ both on what I know, and what might be suitable for such puzzles):
 Used:
 
 * C
+* C++
 * C#
 * COBOL
 * D
