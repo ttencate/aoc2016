@@ -13,4 +13,10 @@ But today's puzzle is more than just that: it combines pathfinding with the
 Travelling Salesman Problem (TSP). This problem is known to be NP-complete, so
 there's not much better I can do than brute forcing all possible orders of
 visiting nodes. Fortunately there are only 7 of them, meaning 7! = 5040
-permutations to try.
+permutations to try. Conveniently, C++ comes with `std::next_permutation` built
+in.
+
+This algorithm worked fine and gave the right answer in negligible runtime.
+
+Part Two was a straightforward addition: also add the distance from the last
+destination back to destination 0.
