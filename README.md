@@ -20,6 +20,9 @@ Languages I could still have used, roughly in order of decreasing preference
 * BASIC
 * Clojure
 * Elixir
+* CoffeeScript
+* Dart
+* Nim
 * REBOL
 * Forth
 * F#
@@ -27,7 +30,10 @@ Languages I could still have used, roughly in order of decreasing preference
 * Octave
 * Erlang
 * Icon
+* Eiffel
+* Prolog
 * CUDA
+* GLSL
 * TCL
 * Smalltalk
 * Julia
@@ -35,6 +41,8 @@ Languages I could still have used, roughly in order of decreasing preference
 * J
 * APL
 * Ada
+* Algol
+* 6502 assembly
 
 Used:
 
